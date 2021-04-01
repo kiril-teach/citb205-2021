@@ -9,8 +9,10 @@ class Product {
 public:
     Product(string name, double price);
     double getPrice() const;
+    string getName();
 private:
     double price;
+    string name;
 };
 
 
