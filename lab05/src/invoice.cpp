@@ -12,3 +12,7 @@ double Invoice::subtotal() {
     }
     return sum;
 }
+
+double Invoice::taxes() {
+    return 0.1 * subtotal();
+}
