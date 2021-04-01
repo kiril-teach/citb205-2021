@@ -2,8 +2,9 @@
 #include "invoice.h"
 #include "textprinter.h"
 
-int main() {
+int main() {      
     Invoice invoice;
+    
     Product superMob("Super Mob", 12.90);
     Product teaCup("Tea Cup", 5.30);
     Product redWineGlass("Red Wine Glass", 8.60);
