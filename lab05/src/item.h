@@ -9,6 +9,7 @@ public:
     Item(Product product, int quantity);
     double total();
     int getQuantity();
+    Product getProduct();
 private:
     Product product;
     int quantity;

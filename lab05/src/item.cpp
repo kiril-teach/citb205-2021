@@ -11,3 +11,7 @@ double Item::total() {
 int Item::getQuantity() {
     return quantity;
 }
+
+Product Item::getProduct() {
+    return product;
+}
