@@ -13,6 +13,7 @@ public:
     void add(Product product, int quantity);
     double subtotal();
     double taxes();
+    double total();
 private:
     vector<Item> items;
 };
