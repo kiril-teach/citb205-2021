@@ -3,7 +3,7 @@
 
 void TextPrinter::print(std::ostream &out, Invoice invoice) {
     for (auto item : invoice.getItems()) {
-        out << item.total() << std::endl;
+        out << item.getQuantity() <<  " | " << item.total() << std::endl;
     }
 
     out << invoice.subtotal() << std::endl;
