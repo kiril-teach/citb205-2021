@@ -3,17 +3,19 @@
 
 class Discount {
 public:
-    double total();
+    virtual double total() =0;
 };
 
 class FixedDiscount : public Discount {
 public:
     FixedDiscount(double amount);
+    double total();
 };
 
 class PercentageDiscount : public Discount {
 public:
     PercentageDiscount(int percentange);
+    double total();
 };
 
 

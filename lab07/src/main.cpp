@@ -9,8 +9,8 @@ int main() {
     Product teaCup("Tea Cup", 5.30);
     Product redWineGlass("Red Wine Glass", 8.60);
 
-    FixedDiscount fiveOff(5.0);
-    PercentageDiscount tenPercentsOff(10);
+    FixedDiscount *fiveOff = new FixedDiscount(5.0);
+    PercentageDiscount *tenPercentsOff = new PercentageDiscount(10);
 
     invoice.add(fiveOff);
     invoice.add(tenPercentsOff);

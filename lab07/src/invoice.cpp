@@ -26,14 +26,14 @@ vector<Item> Invoice::getItems() {
     return items;
 }
 
-void Invoice::add(Discount discount) {
+void Invoice::add(Discount *discount) {
     discounts.push_back(discount);
 }
 
 double Invoice::totalDiscounts() {
     double sum = 0;
     for (auto discount : discounts) {
-        sum += discount.total();
+        sum += discount->total();
     }
     return sum;
 }
