@@ -1,10 +1,11 @@
 ﻿#include "discount.h"
 
-FixedDiscount::FixedDiscount(double amount) {
+FixedDiscount::FixedDiscount(double amount) : amount(amount) {
 
 }
+
 double FixedDiscount::total() {
-    return 2;
+    return amount;
 }
 
 PercentageDiscount::PercentageDiscount(int percentage) {

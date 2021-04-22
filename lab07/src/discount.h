@@ -10,6 +10,8 @@ class FixedDiscount : public Discount {
 public:
     FixedDiscount(double amount);
     double total();
+private:
+    double amount;
 };
 
 class PercentageDiscount : public Discount {
