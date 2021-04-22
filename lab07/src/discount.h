@@ -2,7 +2,8 @@
 #define DISCOUNT_H
 
 class Discount {
-    
+public:
+    double total();
 };
 
 class FixedDiscount : public Discount {

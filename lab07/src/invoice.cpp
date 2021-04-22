@@ -10,6 +10,7 @@ double Invoice::subtotal() {
     for (auto item : items) {
         sum += item.total();
     }
+    sum -= totalDiscounts();
     return sum;
 }
 
@@ -26,9 +27,13 @@ vector<Item> Invoice::getItems() {
 }
 
 void Invoice::add(Discount discount) {
-
+    discounts.push_back(discount);
 }
 
-double Invoice::discounts() {
-    return 0;
+double Invoice::totalDiscounts() {
+    double sum = 0;
+    for (auto discount : discounts) {
+        sum += discount.total();
+    }
+    return sum;
 }

@@ -16,10 +16,11 @@ public:
     double subtotal();
     double taxes();
     double total();
-    double discounts();
+    double totalDiscounts();
     vector<Item> getItems();
 private:
     vector<Item> items;
+    vector<Discount> discounts;
 };
 
 
