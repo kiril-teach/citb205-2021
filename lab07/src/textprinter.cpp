@@ -15,6 +15,8 @@ void TextPrinter::print(std::ostream &out, Invoice invoice) {
         printLineItem(out, item);
         printLineSeparator(out);
     }
+    printSummary(out, "Discounts", invoice.discounts());
+    printSummarySeparator(out);
     printSummary(out, "Subtotal", invoice.subtotal());
     printSummarySeparator(out);
     printSummary(out, "Taxes", invoice.taxes());

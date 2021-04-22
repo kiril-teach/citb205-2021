@@ -28,3 +28,7 @@ vector<Item> Invoice::getItems() {
 void Invoice::add(Discount discount) {
 
 }
+
+double Invoice::discounts() {
+    return 0;
+}
