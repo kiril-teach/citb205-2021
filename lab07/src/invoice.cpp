@@ -33,7 +33,7 @@ void Invoice::add(Discount *discount) {
 double Invoice::totalDiscounts() {
     double sum = 0;
     for (auto discount : discounts) {
-        sum += discount->total();
+        sum += discount->total(items);
     }
     return sum;
 }
