@@ -24,3 +24,7 @@ double Invoice::total() {
 vector<Item> Invoice::getItems() {
     return items;
 }
+
+void Invoice::add(Discount discount) {
+
+}

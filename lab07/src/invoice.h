@@ -5,12 +5,14 @@
 #include <vector>
 #include "product.h"
 #include "item.h"
+#include "discount.h"
 
 using std::vector;
 
 class Invoice {
 public:
     void add(Product product, int quantity);
+    void add(Discount discount);
     double subtotal();
     double taxes();
     double total();
