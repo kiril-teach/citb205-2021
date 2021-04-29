@@ -8,7 +8,7 @@ using std::endl;
 using std::left;
 using std::right;
 
-void TextPrinter::print(std::ostream &out, Invoice invoice) {
+void TextPrinter::print(std::ostream &out, const Invoice &invoice) {
     out << std::setprecision(2) << std::fixed;   
     printLineSeparator(out);
     for (auto item : invoice.getItems()) {
@@ -42,7 +42,7 @@ void TextPrinter::printSummarySeparator(std::ostream &out) {
     out << endl;
 }
 
-void TextPrinter::printLineItem(std::ostream &out, Item item) {
+void TextPrinter::printLineItem(std::ostream &out, Item &item) {
     out << setfill(' ');
     out << '|';
     out << setw(8) << right << item.getQuantity();

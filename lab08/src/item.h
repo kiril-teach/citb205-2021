@@ -6,12 +6,12 @@
 
 class Item {
 public:
-    Item(Product product, int quantity);
+    Item(Product *product, int quantity);
     double total();
     int getQuantity();
-    Product getProduct();
+    Product & getProduct();
 private:
-    Product product;
+    Product *product;
     int quantity;
 };
 

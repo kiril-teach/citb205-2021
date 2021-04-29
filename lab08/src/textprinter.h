@@ -5,10 +5,10 @@
 
 class TextPrinter {
 public:
-    void print(std::ostream &out, Invoice invoice);
+    void print(std::ostream &out, const Invoice &invoice);
 private:
     void printLineSeparator(std::ostream &out);
-    void printLineItem(std::ostream &out, Item item);
+    void printLineItem(std::ostream &out, Item &item);
     void printSummary(std::ostream &out, string label, double value);
     void printSummarySeparator(std::ostream &out);
 };
