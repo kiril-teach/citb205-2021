@@ -42,7 +42,7 @@ void TextPrinter::printSummarySeparator(std::ostream &out) {
     out << endl;
 }
 
-void TextPrinter::printLineItem(std::ostream &out, Item &item) {
+void TextPrinter::printLineItem(std::ostream &out, const Item &item) {
     out << setfill(' ');
     out << '|';
     out << setw(8) << right << item.getQuantity();
