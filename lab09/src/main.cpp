@@ -2,12 +2,15 @@
 #include "invoice.h"
 #include "textprinter.h"
 #include "discount.h"
+#include "catalog.h"
 
 int main() {
+    Catalog catalog;
+
     Invoice invoice;
-    Product *superMob = new Product("Super Mob", 12.90);
-    Product *teaCup = new Product("Tea Cup", 5.30);
-    Product *redWineGlass = new Product("Red Wine Glass", 8.60);
+    Product *superMob = catalog.get(1);
+    Product *teaCup = catalog.get(2);
+    Product *redWineGlass = catalog.get(3);
 
     FixedDiscount *fiveOff = new FixedDiscount(5.0);
     PercentageDiscount *tenPercentsOff = new PercentageDiscount(10);
