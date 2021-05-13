@@ -9,7 +9,7 @@ using std::cerr;
 using std::endl;
 using std::stringstream;
 
-Product * Catalog::get(int id) {
+Product * Catalog::get(int id) const {
     for (auto product : products) {
         if (product->getID() == id) {
             return product;

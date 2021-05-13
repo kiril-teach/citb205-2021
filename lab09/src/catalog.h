@@ -8,7 +8,7 @@ using std::vector;
 
 class Catalog {
 public:
-    Product * get(int id);
+    Product * get(int id) const;
     void load(string path);
 private:
     vector<Product *> products;
