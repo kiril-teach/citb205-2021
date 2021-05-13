@@ -1,12 +1,45 @@
 ﻿#include "catalog.h"
 
+#include <iostream>
+#include <fstream>
+#include <sstream>
+
+using std::ifstream;
+using std::cerr;
+using std::endl;
+using std::stringstream;
+
 Product * Catalog::get(int id) {
-    if (id == 1) {
-        return new Product("Super Mob", 12.90);
-    } else if (id == 2) {
-        return new Product("Tea Cup", 5.30);
-    } else if (id == 3) {
-        return new Product("Red Wine Glass", 8.60);
+    for (auto product : products) {
+        if (product->getID() == id) {
+            return product;
+        }
     }
     return 0;
+}
+
+void Catalog::load(string path) {
+   ifstream fin(path);
+   if (fin.fail()) {
+       cerr << "Cannot open file " << path << endl;
+   }
+   string line;
+   string nop;
+   while(getline(fin, line)) {
+       stringstream ss(line);
+       
+       int id;
+       double price;
+       string name; 
+
+       ss >> id;
+       getline(ss, nop, ',');
+       getline(ss, name, ',');
+       ss >> price;
+       if (ss.fail()) {
+           cerr << "Cannot parse '" << line << "'" << endl;
+           continue;
+       }
+       products.push_back(new Product(id, name, price));
+   }
 }

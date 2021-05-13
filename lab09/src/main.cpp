@@ -4,8 +4,14 @@
 #include "discount.h"
 #include "catalog.h"
 
-int main() {
+int main(int argc, char *argv[]) {
+    if (argc != 2) {
+        std::cout << "Please provide a single argument - the path to the products catalog data file!" << std::endl;
+        return -1;
+    }
+
     Catalog catalog;
+    catalog.load(argv[1]);
 
     Invoice invoice;
     Product *superMob = catalog.get(1);
