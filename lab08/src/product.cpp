@@ -16,6 +16,6 @@ double Product::getPrice() const {
     return price;
 }
 
-string Product::getName() {
+string Product::getName() const {
     return name;
 }

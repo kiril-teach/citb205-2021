@@ -1,17 +1,17 @@
 #include "item.h"
 
-Item::Item(Product *product, int quantity) : product(product) {
+Item::Item(const Product *product, int quantity) : product(product) {
     this->quantity = quantity;
 }
 
-double Item::total() {
+double Item::total() const {
     return product->getPrice() * quantity;
 }
 
-int Item::getQuantity() {
+int Item::getQuantity() const {
     return quantity;
 }
 
-Product & Item::getProduct() {
+const Product & Item::getProduct() const {
     return *product;
 }
