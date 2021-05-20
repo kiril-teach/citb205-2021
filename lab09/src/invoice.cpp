@@ -9,6 +9,10 @@ void Invoice::remove(Product *product, int quantity) {
     for (int i=0; i<items.size(); i++) {
         if (items[i].getProduct().getID() == product->getID()) {
             items[i].remove(quantity);
+            if (items[i].getQuantity() < 1) {
+                items.erase(items.begin() + i);
+            }
+            return;
         }
     }
 }
