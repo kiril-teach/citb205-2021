@@ -15,3 +15,7 @@ int Item::getQuantity() const {
 const Product & Item::getProduct() const {
     return *product;
 }
+
+void Item::remove(int qty) {
+    quantity -= qty;
+}

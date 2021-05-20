@@ -10,6 +10,7 @@ public:
     double total() const;
     int getQuantity() const;
     const Product & getProduct() const;
+    void remove(int qty);
 private:
     const Product *product;
     int quantity;

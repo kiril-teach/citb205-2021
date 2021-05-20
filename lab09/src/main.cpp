@@ -23,6 +23,10 @@ void addCommand(const Catalog &catalog, Invoice &invoice, int productID, int qty
     invoice.add(catalog.get(productID), qty);
 }
 
+void removeCommand(const Catalog &catalog, Invoice &invoice, int productID, int qty) {
+    invoice.remove(catalog.get(productID), qty);
+}
+
 int main(int argc, char *argv[]) {
     if (argc != 2) {
         cout << "Please provide a single argument - the path to the products catalog data file!" << endl;
@@ -44,6 +48,10 @@ int main(int argc, char *argv[]) {
            int id, qty;
            cin >> id >> qty;
            addCommand(catalog, invoice, id, qty);
+       } else if (cmd == "remove") {
+           int id, qty;
+           cin >> id >> qty;
+           removeCommand(catalog, invoice, id, qty);
        }
     }
 

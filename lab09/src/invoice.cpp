@@ -5,6 +5,14 @@ void Invoice::add(Product *product, int quantity) {
     items.push_back(item);
 }
 
+void Invoice::remove(Product *product, int quantity) {
+    for (int i=0; i<items.size(); i++) {
+        if (items[i].getProduct().getID() == product->getID()) {
+            items[i].remove(quantity);
+        }
+    }
+}
+
 double Invoice::subtotal() const {
     double sum = 0;
     for (auto item : items) {
