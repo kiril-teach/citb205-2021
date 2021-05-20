@@ -43,3 +43,7 @@ void Catalog::load(string path) {
        products.push_back(new Product(id, name, price));
    }
 }
+
+vector<Product *> Catalog::getProducts() const {
+    return products;
+}

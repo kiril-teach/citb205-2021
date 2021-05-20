@@ -14,7 +14,9 @@ void printCommand(const Invoice &invoice) {
 }
 
 void showCommand(const Catalog &catalog) {
-    
+    for (auto product : catalog.getProducts()) {
+        cout << product->getID() << " - " << product->getName() << endl;
+    }
 }
 
 void addCommand(const Catalog &catalog, Invoice &invoice, int productID, int qty) {

@@ -10,6 +10,7 @@ class Catalog {
 public:
     Product * get(int id) const;
     void load(string path);
+    vector<Product *> getProducts() const;
 private:
     vector<Product *> products;
 };
