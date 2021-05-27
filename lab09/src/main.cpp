@@ -27,6 +27,20 @@ void removeCommand(const Catalog &catalog, Invoice &invoice, int productID, int 
     invoice.remove(catalog.get(productID), qty);
 }
 
+void discountCommand(Invoice &invoice, string subCmd) {
+    if (subCmd == "fixed") {
+        double amount;
+        cin >> amount;
+        invoice.add(new FixedDiscount(amount));
+    } else if (subCmd == "off") {
+        int percentage;
+        cin >> percentage;
+        invoice.add(new PercentageDiscount(percentage));
+    } else if (subCmd == "clear") {
+        invoice.clearDiscounts();
+    }
+}
+
 int main(int argc, char *argv[]) {
     if (argc != 2) {
         cout << "Please provide a single argument - the path to the products catalog data file!" << endl;
@@ -52,6 +66,10 @@ int main(int argc, char *argv[]) {
            int id, qty;
            cin >> id >> qty;
            removeCommand(catalog, invoice, id, qty);
+       } else if (cmd == "discount") {
+           string subCmd;
+           cin >> subCmd;
+           discountCommand(invoice, subCmd);
        }
     }
 

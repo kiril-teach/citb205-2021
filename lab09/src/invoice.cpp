@@ -55,3 +55,7 @@ double Invoice::totalDiscounts() const {
     }
     return sum;
 }
+
+void Invoice::clearDiscounts() {
+    discounts.clear();
+}

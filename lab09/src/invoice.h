@@ -19,6 +19,7 @@ public:
     double total() const;
     double totalDiscounts() const;
     const vector<Item> & getItems() const;
+    void clearDiscounts();
 private:
     vector<Item> items;
     vector<Discount*> discounts;
