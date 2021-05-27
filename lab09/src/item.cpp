@@ -19,3 +19,7 @@ const Product & Item::getProduct() const {
 void Item::remove(int qty) {
     quantity -= qty;
 }
+
+void Item::add(int qty) {
+    quantity += qty;
+}

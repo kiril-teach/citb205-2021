@@ -1,6 +1,12 @@
 #include "invoice.h"
 
 void Invoice::add(Product *product, int quantity) {
+    for (int i=0; i<items.size(); i++) {
+        if (items[i].getProduct().getID() == product->getID()) {
+            items[i].add(quantity);
+            return;
+        }
+    }
     Item item(product, quantity);
     items.push_back(item);
 }

@@ -11,6 +11,7 @@ public:
     int getQuantity() const;
     const Product & getProduct() const;
     void remove(int qty);
+    void add(int qty);
 private:
     const Product *product;
     int quantity;
