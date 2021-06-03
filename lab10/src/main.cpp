@@ -15,13 +15,8 @@ void printCommand(const Invoice &invoice) {
 
 void showCommand(const Catalog &catalog) {
     for (auto item : catalog.all()) {
-        cout << item.getProduct().getID() << " - " << item.getProduct().getName() << "(" << item.getQuantity() <<  ")" << endl;
+        cout << item.getObj().getID() << " - " << item.getObj().getName() << "(" << item.getQuantity() <<  ")" << endl;
     }
-}
-
-void move(Inventory &source, Inventory &dest, const Product *product, int qty) {
-    source.remove(product, qty);
-    dest.add(product, qty);
 }
 
 void addCommand(Catalog &catalog, Invoice &invoice, int productID, int qty) {

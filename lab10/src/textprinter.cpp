@@ -42,14 +42,14 @@ void TextPrinter::printSummarySeparator(std::ostream &out) {
     out << endl;
 }
 
-void TextPrinter::printLineItem(std::ostream &out, const Item &item) {
+void TextPrinter::printLineItem(std::ostream &out, const Item<Product> &item) {
     out << setfill(' ');
     out << '|';
     out << setw(8) << right << item.getQuantity();
     out << '|';
-    out << setw(40) << left << item.getProduct().getName();
+    out << setw(40) << left << item.getObj().getName();
     out << '|';
-    out << setw(10) << right << item.getProduct().getPrice();
+    out << setw(10) << right << item.getObj().getPrice();
     out << '|';
     out << setw(10) << right << item.total();
     out << '|';

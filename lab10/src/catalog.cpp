@@ -11,8 +11,8 @@ using std::stringstream;
 
 const Product * Catalog::get(int id) const {
     for (auto item : all()) {
-        if (item.getProduct().getID() == id) {
-            return &item.getProduct();
+        if (item.getObj().getID() == id) {
+            return &item.getObj();
         }
     }
     return NULL;

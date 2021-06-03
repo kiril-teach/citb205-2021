@@ -8,7 +8,7 @@ public:
     void print(std::ostream &out, const Invoice &invoice);
 private:
     void printLineSeparator(std::ostream &out);
-    void printLineItem(std::ostream &out, const Item &item);
+    void printLineItem(std::ostream &out, const Item<Product> &item);
     void printSummary(std::ostream &out, string label, double value);
     void printSummarySeparator(std::ostream &out);
 };

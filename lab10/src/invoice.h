@@ -10,7 +10,7 @@
 
 using std::vector;
 
-class Invoice : public Inventory {
+class Invoice : public Inventory<Product> {
 public:
     void apply(Discount *discount);
     double subtotal() const;
