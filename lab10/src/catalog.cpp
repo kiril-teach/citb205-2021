@@ -9,13 +9,13 @@ using std::cerr;
 using std::endl;
 using std::stringstream;
 
-Product * Catalog::get(int id) const {
-    for (auto product : products) {
-        if (product->getID() == id) {
-            return product;
+const Product * Catalog::get(int id) const {
+    for (auto item : all()) {
+        if (item.getProduct().getID() == id) {
+            return &item.getProduct();
         }
     }
-    return 0;
+    return NULL;
 }
 
 void Catalog::load(string path) {
@@ -30,20 +30,19 @@ void Catalog::load(string path) {
        
        int id;
        double price;
-       string name; 
+       string name;
+       int qty;
 
        ss >> id;
        getline(ss, nop, ',');
        getline(ss, name, ',');
        ss >> price;
+       getline(ss, nop, ',');
+       ss >> qty;
        if (ss.fail()) {
            cerr << "Cannot parse '" << line << "'" << endl;
            continue;
        }
-       products.push_back(new Product(id, name, price));
+       add(new Product(id, name, price), qty);
    }
-}
-
-vector<Product *> Catalog::getProducts() const {
-    return products;
 }

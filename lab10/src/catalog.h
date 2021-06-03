@@ -3,16 +3,14 @@
 
 #include <vector>
 #include "product.h"
+#include "inventory.h"
 
 using std::vector;
 
-class Catalog {
+class Catalog : public Inventory {
 public:
-    Product * get(int id) const;
+    const Product * get(int id) const;
     void load(string path);
-    vector<Product *> getProducts() const;
-private:
-    vector<Product *> products;
 };
 
 #endif //CATALOG_H

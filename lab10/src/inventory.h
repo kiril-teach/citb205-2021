@@ -8,7 +8,7 @@ using std::vector;
 
 class Inventory {
 public:
-    void add(Product *product, int quantity) 
+    void add(const Product *product, int quantity) 
     {
         for (int i=0; i<items.size(); i++) {
             if (items[i].getProduct().getID() == product->getID()) {
@@ -19,7 +19,7 @@ public:
         Item item(product, quantity);
         items.push_back(item);
     }
-    void remove(Product *product, int quantity)
+    void remove(const Product *product, int quantity)
     {
         for (int i=0; i<items.size(); i++) {
             if (items[i].getProduct().getID() == product->getID()) {

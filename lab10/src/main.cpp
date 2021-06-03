@@ -14,17 +14,24 @@ void printCommand(const Invoice &invoice) {
 }
 
 void showCommand(const Catalog &catalog) {
-    for (auto product : catalog.getProducts()) {
-        cout << product->getID() << " - " << product->getName() << endl;
+    for (auto item : catalog.all()) {
+        cout << item.getProduct().getID() << " - " << item.getProduct().getName() << "(" << item.getQuantity() <<  ")" << endl;
     }
 }
 
-void addCommand(const Catalog &catalog, Invoice &invoice, int productID, int qty) {
-    invoice.add(catalog.get(productID), qty);
+void move(Inventory &source, Inventory &dest, const Product *product, int qty) {
+    source.remove(product, qty);
+    dest.add(product, qty);
 }
 
-void removeCommand(const Catalog &catalog, Invoice &invoice, int productID, int qty) {
-    invoice.remove(catalog.get(productID), qty);
+void addCommand(Catalog &catalog, Invoice &invoice, int productID, int qty) {
+    auto product = catalog.get(productID);
+    move(catalog, invoice, product, qty);
+}
+
+void removeCommand(Catalog &catalog, Invoice &invoice, int productID, int qty) {
+    auto product = catalog.get(productID);
+    move(invoice, catalog, product, qty);
 }
 
 void discountCommand(Invoice &invoice, string subCmd) {
