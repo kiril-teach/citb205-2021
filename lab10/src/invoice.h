@@ -6,22 +6,19 @@
 #include "product.h"
 #include "item.h"
 #include "discount.h"
+#include "inventory.h"
 
 using std::vector;
 
-class Invoice {
+class Invoice : public Inventory {
 public:
-    void add(Product *product, int quantity);
-    void remove(Product *product, int quantity);
-    void add(Discount *discount);
+    void apply(Discount *discount);
     double subtotal() const;
     double taxes() const;
     double total() const;
     double totalDiscounts() const;
-    const vector<Item> & getItems() const;
     void clearDiscounts();
 private:
-    vector<Item> items;
     vector<Discount*> discounts;
 };
 

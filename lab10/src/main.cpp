@@ -31,11 +31,11 @@ void discountCommand(Invoice &invoice, string subCmd) {
     if (subCmd == "fixed") {
         double amount;
         cin >> amount;
-        invoice.add(new FixedDiscount(amount));
+        invoice.apply(new FixedDiscount(amount));
     } else if (subCmd == "off") {
         int percentage;
         cin >> percentage;
-        invoice.add(new PercentageDiscount(percentage));
+        invoice.apply(new PercentageDiscount(percentage));
     } else if (subCmd == "clear") {
         invoice.clearDiscounts();
     }

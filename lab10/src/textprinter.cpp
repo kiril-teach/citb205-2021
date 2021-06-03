@@ -11,7 +11,7 @@ using std::right;
 void TextPrinter::print(std::ostream &out, const Invoice &invoice) {
     out << std::setprecision(2) << std::fixed;   
     printLineSeparator(out);
-    for (auto item : invoice.getItems()) {
+    for (auto item : invoice.all()) {
         printLineItem(out, item);
         printLineSeparator(out);
     }
