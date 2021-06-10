@@ -7,21 +7,25 @@ using std::vector;
 
 class Discount {
 public:
-    virtual double total(const vector< Item<Product> > &items) =0;
+    Discount(int id);
+    const int getID() const;
+    virtual double total(const vector< Item<Product> > &items) const =0;
+private:
+    int id;
 };
 
 class FixedDiscount : public Discount {
 public:
-    FixedDiscount(double amount);
-    double total(const vector< Item<Product> > &items);
+    FixedDiscount(int id, double amount);
+    double total(const vector< Item<Product> > &items) const;
 private:
     double amount;
 };
 
 class PercentageDiscount : public Discount {
 public:
-    PercentageDiscount(int percentange);
-    double total(const vector< Item<Product> > &items);
+    PercentageDiscount(int id, int percentange);
+    double total(const vector< Item<Product> > &items) const;
 private:
     int percentage;
 };

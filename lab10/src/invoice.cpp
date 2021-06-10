@@ -17,14 +17,14 @@ double Invoice::total() const {
     return subtotal() + taxes();
 }
 
-void Invoice::apply(Discount *discount) {
-    discounts.push_back(discount);
+void Invoice::apply(Inventory<Discount> &discounts, const Discount *discount) {
+    move(discounts, this->discounts, discount, 1);
 }
 
 double Invoice::totalDiscounts() const {
     double sum = 0;
-    for (auto discount : discounts) {
-        sum += discount->total(all());
+    for (auto discountItems : discounts.all()) {
+        sum += discountItems.getObj().total(all());
     }
     return sum;
 }

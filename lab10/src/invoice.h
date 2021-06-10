@@ -12,15 +12,17 @@ using std::vector;
 
 class Invoice : public Inventory<Product> {
 public:
-    void apply(Discount *discount);
+    void apply(Inventory<Discount> &discounts, const Discount *discount);
     double subtotal() const;
     double taxes() const;
     double total() const;
     double totalDiscounts() const;
     void clearDiscounts();
 private:
-    vector<Discount*> discounts;
+    Inventory<Discount> discounts;
 };
+
+
 
 
 #endif //LAB1_INVOICE_H

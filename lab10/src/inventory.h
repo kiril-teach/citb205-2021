@@ -36,6 +36,17 @@ public:
     {
         return items;
     }
+    const T * get(int id) const {
+        for (auto item : items) {
+            if (item.getObj().getID() == id) {
+                return &item.getObj();
+            }
+        }
+        return NULL;
+    }
+    void clear() {
+        items.clear();
+    }
 private:
     vector< Item<T> > items;
 };

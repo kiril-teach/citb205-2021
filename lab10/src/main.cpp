@@ -13,9 +13,14 @@ void printCommand(const Invoice &invoice) {
     printer.print(cout, invoice);
 }
 
-void showCommand(const Catalog &catalog) {
+void showCommand(const Catalog &catalog, const Inventory<Discount> discounts) {
+    cout << "Products: " << endl;
     for (auto item : catalog.all()) {
         cout << item.getObj().getID() << " - " << item.getObj().getName() << "(" << item.getQuantity() <<  ")" << endl;
+    }
+    cout << "Discounts: " << endl;
+    for (auto d : discounts.all()) {
+        cout << d.getObj().getID() << " " << d.getQuantity() << endl;
     }
 }
 
@@ -29,18 +34,9 @@ void removeCommand(Catalog &catalog, Invoice &invoice, int productID, int qty) {
     move(invoice, catalog, product, qty);
 }
 
-void discountCommand(Invoice &invoice, string subCmd) {
-    if (subCmd == "fixed") {
-        double amount;
-        cin >> amount;
-        invoice.apply(new FixedDiscount(amount));
-    } else if (subCmd == "off") {
-        int percentage;
-        cin >> percentage;
-        invoice.apply(new PercentageDiscount(percentage));
-    } else if (subCmd == "clear") {
-        invoice.clearDiscounts();
-    }
+void addDiscountCommand(Inventory<Discount> &discounts, Invoice &invoice, int discountID) {
+    auto discount = discounts.get(discountID);
+    invoice.apply(discounts, discount);
 }
 
 int main(int argc, char *argv[]) {
@@ -52,6 +48,10 @@ int main(int argc, char *argv[]) {
     Catalog catalog;
     catalog.load(argv[1]);
 
+    Inventory<Discount> discounts;
+    discounts.add(new FixedDiscount(1, 10), 5);
+    discounts.add(new PercentageDiscount(2, 5), 2);
+
     Invoice invoice;
 
     string cmd;
@@ -59,7 +59,7 @@ int main(int argc, char *argv[]) {
        if (cmd == "print") {
            printCommand(invoice);
        } else if(cmd == "show") {
-           showCommand(catalog);
+           showCommand(catalog, discounts);
        } else if(cmd == "add") {
            int id, qty;
            cin >> id >> qty;
@@ -71,7 +71,11 @@ int main(int argc, char *argv[]) {
        } else if (cmd == "discount") {
            string subCmd;
            cin >> subCmd;
-           discountCommand(invoice, subCmd);
+           if (subCmd == "add") {
+               int id;
+               cin >> id;
+               addDiscountCommand(discounts, invoice, id);
+            }
        }
     }
 

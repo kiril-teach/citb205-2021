@@ -9,7 +9,6 @@ using std::vector;
 
 class Catalog : public Inventory<Product> {
 public:
-    const Product * get(int id) const;
     void load(string path);
 };
 

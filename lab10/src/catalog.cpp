@@ -9,15 +9,6 @@ using std::cerr;
 using std::endl;
 using std::stringstream;
 
-const Product * Catalog::get(int id) const {
-    for (auto item : all()) {
-        if (item.getObj().getID() == id) {
-            return &item.getObj();
-        }
-    }
-    return NULL;
-}
-
 void Catalog::load(string path) {
    ifstream fin(path);
    if (fin.fail()) {

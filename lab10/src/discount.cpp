@@ -1,18 +1,26 @@
 ﻿#include "discount.h"
 
-FixedDiscount::FixedDiscount(double amount) : amount(amount) {
+Discount::Discount(int id) : id(id) {
 
 }
 
-double FixedDiscount::total(const vector< Item<Product> > &items) {
+const int Discount::getID() const {
+    return id;
+}
+
+FixedDiscount::FixedDiscount(int id, double amount) : amount(amount), Discount(id) {
+
+}
+
+double FixedDiscount::total(const vector< Item<Product> > &items) const {
     return amount;
 }
 
-PercentageDiscount::PercentageDiscount(int percentage) : percentage(percentage) {
+PercentageDiscount::PercentageDiscount(int id, int percentage) : percentage(percentage), Discount(id) {
 
 }
 
-double PercentageDiscount::total(const vector< Item<Product> > &items) {
+double PercentageDiscount::total(const vector< Item<Product> > &items) const {
     double sum = 0;
     for (auto item : items) {
         sum += item.total();
